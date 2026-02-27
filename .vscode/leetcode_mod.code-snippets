@@ -1,0 +1,35 @@
+{
+    "LeetCode C++ Full": {
+        "prefix": "lcpp",
+        "body": [
+            "#include <iostream>",
+            "#include <vector>",
+            "#include <string>",
+            "#include <algorithm>",
+            "#include <unordered_map>",
+            "#include <unordered_set>",
+            "#include <queue>",
+            "#include <stack>",
+            "#include <cmath>",
+            "#include <climits>",
+            "using namespace std;",
+            "",
+            "",
+            "/**",
+            "题目：${TM_FILENAME_BASE}",
+            "思路：$1",
+            "总结：$1",
+            " */",
+            "class Solution {",
+            "public:",
+            "    $2",
+            "};",
+            "",
+            "int main() {",
+            "    Solution sol;",
+            "    return 0;",
+            "}"
+        ],
+        "description": "LeetCode C++ 完整模板（含常用头文件和辅助函数）"
+    }
+}
