@@ -27,6 +27,8 @@ using namespace std;
     时间复杂度o(n),空间复杂度o(1);
 总结：比较特殊的dp题，好歹做出来了，但是对0的更新用到了if语句，没有纳入到状态转移方程里面，所以代码比较冗杂
 优化方向：优化代码结构
+    dp[i]=max(dp[i-1]*nums[i],fdp[i-1]*nums[i],0);
+    fdp[i]=min(dp[i-1]*nums[i],fdp[i-1]*nums[i],0);
  */
 class Solution {
     public:
