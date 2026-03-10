@@ -1,0 +1,60 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <unordered_map>
+#include <unordered_set>
+#include <queue>
+#include <stack>
+#include <cmath>
+#include <climits>
+using namespace std;
+
+
+/**
+题目：1143
+给定两个字符串 text1 和 text2，返回这两个字符串的最长 公共子序列 的长度。如果不存在 公共子序列 ，返回 0 。
+一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。
+例如，"ace" 是 "abcde" 的子序列，但 "aec" 不是 "abcde" 的子序列。
+两个字符串的 公共子序列 是这两个字符串所共同拥有的子序列。
+
+思路：状态：dp[i][j] 表示序列1前i个和序列2前j个的最大字段长度
+    初始条件dp[0][j]=dp[i][0]=0；
+    可能：新增的两个是否可以添加到最长字段里？
+    状态转移方程：dp[i][j]=dp[i-1][j-1]+1; text[i-1]=text[j-1];
+                dp[i][j]=max(dp[i-1][j],dp[i][j-1]), otherwise
+总结：
+
+ */
+class Solution {
+    public:
+        int longestCommonSubsequence(string text1, string text2) {
+            int m=text1.size();
+            int n=text2.size();
+            if(m==0||n==0){
+                return 0;
+            }
+            vector<vector<int>>dp(m+1,vector<int>(n+1));
+            for(int i=0;i<=m;i++){
+                dp[i][0]=0;
+            }
+            for(int i=0;i<=n;i++){
+                dp[0][i]=0;
+            }
+            for(int i=1;i<=m;i++)
+            {
+                for(int j=1;j<=n;j++){
+                    if(text1[i-1]==text2[j-1])dp[i][j]=dp[i-1][j-1]+1;
+                    else dp[i][j]=max(dp[i-1][j],dp[i][j-1]);
+                }
+            }
+            return dp[m][n];
+        }
+};
+
+int main() {
+    Solution sol;
+    string t1="abcde",t2="ace";
+    cout<<sol.longestCommonSubsequence(t1,t2);
+    return 0;
+}
